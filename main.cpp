@@ -52,7 +52,7 @@ int main(int argc, char *argv[]) {
             auto table = main.get()->createTable(fatalError);
 
             if (*fatalError) {
-                cout << endl << "Fix error plz" << endl;
+                cout << endl << "fix error" << endl;
                 return 0;
             }
 
@@ -88,7 +88,7 @@ int main(int argc, char *argv[]) {
         table.print();
 
         if (*fatalError) {
-            cout << endl << "Fix error plz" << endl;
+            cout << endl << "fix error" << endl;
             return 0;
         }
 
