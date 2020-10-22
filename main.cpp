@@ -6,7 +6,7 @@
 
 int main(int argc, char *argv[]) {
     if (argc < 1) {
-        cout << "Вы ввели невалидное количество аргументов!" << endl;
+        cout << "invalid number of arguments" << endl;
         return 0;
     }
 
