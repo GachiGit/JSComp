@@ -68,7 +68,7 @@ unique_ptr<ExprAST> Parser::parse(unique_ptr<bool> &fatalError) {
             }
             default:
                 fatalError.reset(new bool(true));
-                printError("Неподдерживаемый токен: ", currentToken);
+                printError("Unsupported token: ", currentToken);
                 getNextToken();
                 break;
         }
@@ -106,7 +106,7 @@ unique_ptr<ExprAST> Parser::ParsePrimary(unique_ptr<bool> &fatalError) {
         }
         default:
             fatalError.reset(new bool(true));
-            printError("Неизвестное выражение: ", currentToken);
+            printError("Unknown expression: ", currentToken);
     }
     return nullptr;
 }
@@ -116,7 +116,7 @@ unique_ptr<ExprAST> Parser::parseParenExpr(unique_ptr<bool> &fatalError) {
 
     if (currentToken.type == RPAREN) {
         fatalError.reset(new bool(true));
-        printError("Ожидалось выражение внутри скобок: ", currentToken);
+        printError("Expected expression inside brackets: ", currentToken);
 
         return nullptr;
     }
@@ -127,7 +127,7 @@ unique_ptr<ExprAST> Parser::parseParenExpr(unique_ptr<bool> &fatalError) {
         return nullptr;
 
     if (currentToken.type != RPAREN) {
-        printError("Ожидалось закрытая скобка: ", currentToken);
+        printError("Expected closed bracket: ", currentToken);
         fatalError.reset(new bool(true));
     }
     getNextToken();
@@ -205,7 +205,7 @@ unique_ptr<ExprAST> Parser::parseOutput(unique_ptr<bool> &fatalError) {
     if (currentToken.type != DOT) {
         fatalError.reset(new bool(true));
 
-        printError("Ошибка: ожидалась точка: ", currentToken);
+        printError("Error: expected point: ", currentToken);
 
         return nullptr;
     }
@@ -215,7 +215,7 @@ unique_ptr<ExprAST> Parser::parseOutput(unique_ptr<bool> &fatalError) {
     if (currentToken.type != KW_LOG) {
         fatalError.reset(new bool(true));
 
-        printError("Ошибка: ожидалось log: ", currentToken);
+        printError("Error: expected log: ", currentToken);
 
         return nullptr;
     }
@@ -230,7 +230,7 @@ unique_ptr<ExprAST> Parser::parseID(TokenType type, unique_ptr<bool> &fatalError
     if (currentToken.type != ID) {
         fatalError.reset(new bool(true));
 
-        printError("Ошибка: некорректное имя переменной: ", currentToken);
+        printError("Error: Invalid variable name ", currentToken);
 
         return nullptr;
     }
@@ -246,7 +246,7 @@ unique_ptr<ExprAST> Parser::parseID(TokenType type, unique_ptr<bool> &fatalError
 
         if (currentToken.type != NUMBER) {
             fatalError.reset(new bool(true));
-            printError("Ошибка: Неккоретный индекс обращения к массиву: ", currentToken);
+            printError("Error: Non-core index of array access: ", currentToken);
             return nullptr;
         }
 
@@ -254,7 +254,7 @@ unique_ptr<ExprAST> Parser::parseID(TokenType type, unique_ptr<bool> &fatalError
 
         if (currentToken.type != RBRACE) {
             fatalError.reset(new bool(true));
-            printError("Ошибка: ожидалась ']': ", currentToken);
+            printError("error: expected ']': ", currentToken);
             return nullptr;
         }
 
