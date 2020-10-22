@@ -14,7 +14,7 @@ protected:
 
 TEST(TestParser, oneOpPlus) {
     EXPECT_EQ(1, 1);
-    std::cout << "lol";
+    std::cout << "Job's done";
 }
 
 /*int main(int argc, char** argv) {
